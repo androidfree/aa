@@ -70,7 +70,26 @@ public class MainActivity extends Activity {
 
 	}
 	//解析手机号归属地
-	
+	private String getinfo3(String s){
+		try {
+			String substring = s.substring(s.indexOf("{"), s.indexOf("}")+1);
+			Log.i("info", substring);
+			JSONObject jsonObject = new JSONObject(substring);
+			String Mobile = jsonObject.getString("Mobile");
+			String Province = jsonObject.getString("Province");
+			String City = jsonObject.getString("City");
+			String Corp = jsonObject.getString("Corp");
+			String info = "您的查询结果是："+Mobile+"归属地："+Province+""+City+""+Corp;
+			return info;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		
+	}
 	// 解析带数组的json
  	private List<Animal> getinfo2(String s) {
 		try {
